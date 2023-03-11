@@ -1,3 +1,6 @@
+# ps
+This repo clone from TarheelGrad1998/gallery-card, the only change is to add vertical display mode, in which vertical videos work well.
+
 # Gallery Card
 
 Custom card for Home Assistant's UI LoveLace which will display images and videos in the style of a gallery.  Also supports displaying camera images.
