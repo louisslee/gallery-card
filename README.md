@@ -1,5 +1,5 @@
 # ps
-This repo clone from TarheelGrad1998/gallery-card, the only change is to add vertical display mode, in which vertical videos work well.
+This repo clones from TarheelGrad1998/gallery-card, the only change is to add vertical display mode, in which vertical videos work well.
 
 # Gallery Card
 
