@@ -83,7 +83,8 @@ Available options for Menu Alignment are below:
 | Top | Always shows a horizontal list on the top of the card.
 | Botom | Always shows a vertical list on the bottom of the card.
 | Hidden | Hides the list and only shows the larger image
-
+| Vertical | It's useful for vertical video
+ 
 ### Caption Configuration
 The captions under the image/video is formatted using file_name_format, caption_format, and caption_leading_zeros.  If either file_name_format or caption_format is ommitted, the raw filename is used.
 
