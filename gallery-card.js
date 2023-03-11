@@ -38,9 +38,7 @@ class GalleryCard extends LitElement {
                 html`<img @click="${ev => this._popupImage(ev)}" src="${this._currentResource().url}"/>` :
                 html`<video controls src="${this._currentResource().url}#t=0.1" @loadedmetadata="${ev => this._videoMetadataLoaded(ev)}" @canplay="${ev => this._startVideo(ev)}"></video>`
               }
-              <figcaption>${this._currentResource().caption} 
-                ${this._isImageExtension(this._currentResource().extension) ?
-                  html`` : html`<span class="duration"></span>` }
+              <figcaption>${this._currentResource().caption}
               </figcaption>
             </figure>  
             <button class="btn btn-left" @click="${ev => this._selectResource(this.currentResourceIndex-1)}">&lt;</button> 
@@ -61,7 +59,7 @@ class GalleryCard extends LitElement {
                       html`<img class="lzy_img" src="/local/community/gallery-card/placeholder.jpg" data-src="${resource.url}"/>` :
 					            html`<video preload="none" data-src="${resource.url}#t=0.1" @loadedmetadata="${ev => this._videoMetadataLoaded(ev)}" @canplay="${ev => this._downloadNextMenuVideo()}"></video>`
                     }
-                    <figcaption>${resource.caption} <span class="duration"></span></figcaption>
+                    <figcaption>${resource.caption} </figcaption>
                     </figure>
                 `;
             })}
@@ -138,7 +136,7 @@ class GalleryCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("gallery-card-editor");
+    return document.createElement("custom-gallery-card-editor");
   }
 
   getCardSize() {
@@ -699,7 +697,26 @@ class GalleryCard extends LitElement {
           margin: 0px;
           padding: 12px;
         }
+        
+        .menu-vertical .resource-viewer {
+          width: 100%;
+        }
+        .menu-vertical .resource-viewer .btn {
+          top: 33%;
+        }
+        .menu-vertical .resource-menu {
+          width:100%; 
+          overflow-y: hidden;
+          overflow-x: scroll;
+          display: flex;
+        }
+        .menu-vertical .resource-menu figure {
+          margin: 0px;
+          padding: 12px;
+        }
+
       }
+   
       @media all and (min-width: 600px) {
         .menu-responsive .resource-viewer {
           float: left;
@@ -716,7 +733,28 @@ class GalleryCard extends LitElement {
           overflow-y: scroll; 
           float: right;
         }
+        .menu-vertical .resource-viewer {
+          float: left;
+          width: 28%;
+          position: relative;
+        }
+        .menu-vertical .resource-viewer .btn {
+          top: 40%;
+        }
+        .menu-vertical .resource-menu {
+          width:72%; 
+          height: calc(100vh - 120px);
+          overflow-y: scroll; 
+          float: right;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: flex-start;
+        }      
+        .menu-vertical .resource-menu figure {
+          width: calc(20% - 10px);
+        }
       }
+      
       .menu-bottom .resource-viewer {
         width: 100%;
       }
@@ -746,22 +784,23 @@ class GalleryCard extends LitElement {
       .menu-right .resource-viewer .btn {
         top: 40%;
       }
-              
       .menu-right .resource-menu {
         width:25%; 
         height: calc(100vh - 120px);
         overflow-y: scroll; 
         float: right;
       }
+      
+
       .menu-left .resource-viewer {
         float: right;
         width: 75%;
         position: relative;
       }
+      
       .menu-left .resource-viewer .btn {
         top: 40%;
       }
-              
       .menu-left .resource-menu {
         width:25%; 
         height: calc(100vh - 120px);
@@ -861,7 +900,7 @@ class GalleryCard extends LitElement {
     `;
   }
 }
-customElements.define("gallery-card", GalleryCard);
+customElements.define("custom-gallery-card", GalleryCard);
 
 class GalleryCardEditor extends LitElement {
   static get properties() {
@@ -1094,6 +1133,7 @@ class GalleryCardEditor extends LitElement {
             <paper-item>Top</paper-item>
             <paper-item>Bottom</paper-item>
             <paper-item>Hidden</paper-item>
+            <paper-item>Vertical</paper-item>
           </paper-listbox>
         </paper-dropdown-menu><br/>
         <ha-checkbox
@@ -1382,11 +1422,11 @@ class GalleryCardEditor extends LitElement {
   }
 }
 
-customElements.define("gallery-card-editor", GalleryCardEditor);
+customElements.define("custom-gallery-card-editor", GalleryCardEditor);
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "gallery-card",
-  name: "Gallery Card",
+  type: "custom-gallery-card",
+  name: "Custom Gallery Card",
   preview: false, // Optional - defaults to false
   description: "The Gallery Card allows for viewing multiple images/videos.  Requires the Files sensor availble at https://github.com/TarheelGrad1998" // Optional
 });
