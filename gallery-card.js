@@ -56,7 +56,7 @@ class GalleryCard extends LitElement {
                           .cameraView=${"live"}
                         ></hui-image>` :
                       this._isImageExtension(resource.extension) ?
-                      html`<img class="lzy_img" src="/local/community/gallery-card/placeholder.jpg" data-src="${resource.url}"/>` :
+                      html`<img class="lzy_img" src="/local/community/custom-gallery-card/placeholder.jpg" data-src="${resource.url}"/>` :
 					            html`<video preload="none" data-src="${resource.url}#t=0.1" @loadedmetadata="${ev => this._videoMetadataLoaded(ev)}" @canplay="${ev => this._downloadNextMenuVideo()}"></video>`
                     }
                     <figcaption>${resource.caption} </figcaption>
